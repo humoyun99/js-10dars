@@ -29,7 +29,11 @@ const requst=new XMLHttpRequest('GET','https://jsonplaceholder.typicode.com/todo
 // bo'lganda (masalan, so'rov holati o'zgarganda) chaqiriladigan funktsiyani beradi.
 //  Funktsiya, har qanday o'zgarishda so'rov holatini (readyState) va so'rov o'zini konsolga yozadi.
 requst.addEventListener('readystatechange',()=>{
-    console.log(requst,requst.readyState)
+    if(requst.readyState==4&&requst.status==200){
+        console.log(requst.responseText)
+    }else if(requst.readyState==4){
+        console.log('malumotni olishni uloji yuq')
+    }
 })
 requst.open('GET','https://jsonplaceholder.typicode.com/todos/')
 //So'rov yuboriladi. Bu, belgilangan URL ga GET so'rovini jo'natadi va javobni kutiladi.
